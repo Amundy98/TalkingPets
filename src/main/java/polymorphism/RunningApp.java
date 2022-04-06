@@ -14,9 +14,9 @@ public class RunningApp {
         dog.petCheck();
 
 
-        dog.speak();
-        cat.speak();
-        turtle.speak();
+//        dog.speak();
+//        cat.speak();
+//        turtle.speak();
 
 
 

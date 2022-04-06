@@ -6,11 +6,14 @@ import java.util.Scanner;
 public abstract class Pet {
     Scanner myObj = new Scanner(System.in);
     ArrayList<String> nameList = new ArrayList<String>();
+    ArrayList<String> typeList = new ArrayList<String>();
 
     private int numberOfPets;
     private String name;
     private String petType;
-
+//    public Cat myCat = new Cat("");
+//    public Dog myDog = new Dog("");
+//    public Turtle myTurtle = new Turtle("");
 
     public Pet(String namePet){
         this.name=namePet;
@@ -18,33 +21,44 @@ public abstract class Pet {
     }
 
 
-    public void petCheck() {
-        for (int i = 0; i <3; i++){
-            System.out.println("How many pets do you have?");
-            this.numberOfPets = myObj.nextInt();
-            myObj.nextLine();
 
-            System.out.println("What kind of pet do you have?");
-            this.petType= myObj.nextLine();
+    public void petCheck() {
+
+        System.out.println("How many pets do you have?");
+        this.numberOfPets = myObj.nextInt();
+        myObj.nextLine();
+
+        for (int i = 0; i < numberOfPets; i++) {
+
+            System.out.println("What is the type of pet: ?");
+            this.petType = myObj.nextLine();
+            typeList.add(petType);
 
             System.out.println("What is your pet name?");
             this.name = myObj.nextLine();
+            nameList.add(name);
 
-            System.out.println("Number of pets: " + numberOfPets);
-            System.out.println("Pet type: " + petType);
-            System.out.println("Pet name: " + name);
-
-            if (this.name.equals("")){
-                nameList.add(this.name);
-                System.out.println("Name added: " + this.name);
+            if (petType.equalsIgnoreCase("cat")) {
+                Cat myCat = new Cat(name);
+                myCat.speak();
+            } else if(petType.equalsIgnoreCase("dog")){
+                Dog myDog = new Dog(name);
+                myDog.speak();
+            } else if(petType.equalsIgnoreCase("turtle")){
+                Turtle myTurtle = new Turtle(name);
+                myTurtle.speak();
+            } else {
+                System.out.println("Invalid entry.");
             }
+        }
+        System.out.println("Number of pets: " + numberOfPets);
+        System.out.println("Pet type: " + typeList);
+        System.out.println("Pet name: " + nameList);
 
-        }
-        for (String i:nameList
-             ) {
-            System.out.println();
-        }
     }
+
+
+
 
 
     public abstract void speak();
